@@ -1,0 +1,144 @@
+/* TODO naming: `dice`, `dices`? */
+:host {
+  display: inline-flex;
+  width: 624px;
+  max-width: 624px; /* TODO fit to content? */
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.dices, .game-phase, .board {
+  /* flex: 0 0 100%; */
+  page-break-after: always;
+  break-after: always;
+}
+
+.current-player {
+  width: 250px;
+  height: 50px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.current-player.white {
+  border: 3px solid #999;
+  background: #b9b9b9;
+  color: white;
+}
+.current-player.black {
+  border: 3px solid #111;
+  background: #333;
+  color: white;
+}
+.current-player .title {
+  line-height: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+.dices .title {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  margin-right: 10px;
+  line-height: 40px;
+}
+.dice {
+  display: inline-block;
+  margin: 0px 2px;
+  vertical-align: middle;
+}
+.dice .result {
+  width: 15px;
+  height: 40px;
+  border: 3px solid black;
+  border-radius: 2px;
+}
+.dice .result.true {
+  background: black;
+}
+.dice .result.false {
+  background: white;
+}
+
+.game-phase.throw-dice button {
+  border: 3px solid black;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  background: white;
+}
+.game-phase.throw-dice button:hover {
+  background: lightblue;
+}
+
+.stats .stashes, .stats .scores {
+  margin: 5px 10px;
+  height: 30px;
+}
+.stash, .score {
+  display: inline-block;
+}
+.stats .title {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 100px;
+}
+.stats .piece {
+  display: inline-block;
+  margin: 0px 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 15px;
+  vertical-align: middle;
+}
+
+.tile {
+  float: left;
+  margin: 2px;
+  border: 2px solid black;
+  width: 70px;
+  height: 70px;
+  background-size: cover;
+}
+.tile:hover {
+  opacity: 0.5;
+}
+.tile.row-break {
+  clear: left;
+}
+.tile.invalid {
+  border-color: transparent;
+}
+.tile.finish { background-image: url('/assets/finish.png'); }
+.tile.five-dots { background-image: url('/assets/five-dots.png'); }
+.tile.four-cinques { background-image: url('/assets/four-cinques.png'); }
+.tile.four-eyes { background-image: url('/assets/four-eyes.png'); }
+.tile.pyramid { background-image: url('/assets/pyramid.png'); }
+.tile.rosetta { background-image: url('/assets/rosetta.png'); }
+
+.piece {
+  width: 64px;
+  height: 64px;
+}
+.piece.action-tile {
+  border: 3px solid blue;
+  border-radius: 0;
+}
+.piece.white {
+  border: 3px solid #999;
+  background: #b9b9b9;
+  border-radius: 35px;
+}
+.piece.black {
+  border: 3px solid #111;
+  background: #333;
+  border-radius: 35px;
+}
+.piece.white.action-tile,
+.piece.black.action-tile {
+  border: 3px solid blue;
+}
+

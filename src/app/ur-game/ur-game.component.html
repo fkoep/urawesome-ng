@@ -1,0 +1,51 @@
+<div class="current-player {{game.currentPlayer}}">
+  <h2 class="title">Turn: {{game.currentPlayer}}</h2>
+</div>
+
+<div class="dices">
+  <h2 class="title">Dice:</h2>
+  <div *ngFor="let dice of game.dices" class="dice {{dice}}">
+    <div *ngIf="dice" class="result true"></div>
+    <div *ngIf="!dice" class="result false"></div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stashes">
+    <h3 class="title">Stashed:</h3>
+    <div *ngFor="let kv of game.stashes | keyvalue" class="stash {{kv.key}}" >
+      <div *ngFor="let i of count(kv.value)" class="piece {{kv.key}}"></div>
+    </div>
+  </div>
+
+  <div class="scores">
+    <h3 class="title">Scored:</h3>
+    <div *ngFor="let kv of game.scores | keyvalue" class="score {{kv.key}}" >
+      <div *ngFor="let i of count(kv.value)" class="piece {{kv.key}}"></div>
+    </div>
+  </div>
+</div>
+
+<div class="game-phase {{game.phase}}">
+  <div *ngIf="game.phase === 'throw-dice'">
+    <button (click)="throwDice()">Throw dice!</button>
+  </div>
+
+  <div *ngIf="game.phase === 'has-won'">
+    {{game.currentPlayer}} has won!
+  </div>
+
+  <div *ngIf="game.phase === 'has-conceded'">
+    {{game.currentPlayer}} has conceded!
+  </div>
+</div>
+
+
+<div class="board">
+  <div *ngFor="let tile of game.board.tiles; let pos = index" class="tile {{tile}} {{(pos !== 0 && pos % game.board.width === 0) ? 'row-break' : ''}}">
+    <div *ngIf="isActionTile(pos)" class="piece {{game.pieces[pos]}} action-tile" (click)="triggerActionTile(pos)"></div>
+    <div *ngIf="!isActionTile(pos)" class="piece {{game.pieces[pos]}}"></div>
+  </div>
+</div>
+
+
